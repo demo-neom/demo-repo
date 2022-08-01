@@ -2,10 +2,9 @@
 tasks:
   - init: yarn install
     command: yarn build
-  - init: yum install
-    command: sudo apt-get install yum
-  - init: terraform install
-    command: sudo yum install -y yum-utils && sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && sudo yum -y install terraform
+  - init: terraform installation
+    command: sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && sudo apt update && sudo apt install terraform
+  
 # Ports to expose on workspace startup
 ports:
   - port: 8000
